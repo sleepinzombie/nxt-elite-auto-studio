@@ -1,8 +1,11 @@
-import BenefitCard from "@/components/benefit-card/benefit-card";
+import AboutService from "@/components/about-service/about-service";
+import AddOnCard from "@/components/add-on-card/add-on-card";
 import BeforeAfterGallery from "@/components/before-after-gallery/before-after-gallery";
 import FaqItem from "@/components/faq-item/faq-item";
 import Hero from "@/components/hero/hero";
 import MediaCard from "@/components/media-card/media-card";
+import MobileCarousel from "@/components/mobile-carousel/mobile-carousel";
+import PackageCard from "@/components/package-card/package-card";
 import PrimaryLink from "@/components/primary-link/primary-link";
 import ProcessStep from "@/components/process-step/process-step";
 import ProcessStepGallery from "@/components/process-step-gallery/process-step-gallery";
@@ -14,16 +17,33 @@ import SiteHeader from "@/components/site-header/site-header";
 import TestimonialCarousel from "@/components/testimonial-carousel/testimonial-carousel";
 
 const services = [
-  ["01", "Interior Detail", "Deep cleaning for seats, carpets, trim and every hard-to-reach surface."],
-  ["02", "Exterior Detail", "A careful multi-stage wash, decontamination and hand-finished protection."],
-  ["03", "Full Detail", "Our complete inside-and-out treatment for a genuinely transformed vehicle."],
-  ["04", "Sale Preparation", "A presentation-focused detail designed to make the strongest first impression."],
+  ["01", "Car Wash", "A safe exterior wash that refreshes paintwork, glass, wheels and finishing details."],
+  ["02", "Interior Detail", "A deep reset for seats, carpets, trim and the surfaces you use every day."],
+  ["03", "Full Detail", "A complete interior-and-exterior treatment for a vehicle that needs a proper reset."],
+  ["04", "Headlight Polish", "Cleaning and polishing for clearer headlight lenses and a sharper front-end finish."],
+  ["05", "Sale Preparation", "Presentation-led care that helps your vehicle make the right first impression."],
 ];
 
-const benefits = [
-  ["01", "We come to you", "Premium detailing at your home or workplace, without disrupting your day."],
-  ["02", "Professional products", "Safe, specialist products selected for your vehicle and its finishes."],
-  ["03", "Detail-led service", "One vehicle at a time, with the patience required for a consistent result."],
+type Package = [string, string, string, string[]];
+type AddOn = [string, string, string];
+
+const packages: Package[] = [
+  ["From €95", "Interior Refresh", "A thorough reset for the cabin you spend time in every day.", ["Vacuum and surface clean", "Seats, carpets and trim", "Windows and finishing touches"]],
+  ["From €145", "Complete Detail", "A balanced inside-and-out appointment for a noticeably renewed vehicle.", ["Interior Refresh included", "Hand wash and decontamination", "Exterior protection finish"]],
+  ["From €220", "Signature Detail", "A more considered transformation for vehicles that deserve extra attention.", ["Deep interior treatment", "Enhanced exterior correction", "Final inspection and handover"]],
+];
+
+const addOns: AddOn[] = [
+  ["Engine bay detail", "A careful clean and finish for the area beneath the bonnet.", "From €35"],
+  ["Pet hair removal", "Extra time and specialist tools for embedded pet hair.", "From €30"],
+  ["Headlight restoration", "Restore clarity and finish to weathered headlight lenses.", "From €60"],
+  ["Odour treatment", "A targeted interior treatment for lingering odours.", "From €40"],
+];
+
+const aboutServices = [
+  ["01", "Car wash", "A careful exterior clean that respects modern finishes, wheels and glass."],
+  ["02", "Auto detailing", "Focused interior and exterior work, matched to the vehicle in front of us."],
+  ["03", "Headlight care", "Cleaning and polishing that brings cloudy lenses back to a clearer finish."],
 ];
 
 const works = [
@@ -67,11 +87,13 @@ const Page = () => <main>
 
   <Hero />
 
-  <section className="benefits shell" id="about"><Reveal className="section-top section-top--dark"><div><p className="section-label">About Elite</p><h2>Detailing built<br />around <span>your day.</span></h2></div><p>Premium mobile care for the vehicles you value, with an approach that respects your time and your finish.</p></Reveal><Reveal className="benefit-grid" delay={120}>{benefits.map(([number, title, description]) => <BenefitCard description={description} key={number} number={number} title={title} />)}</Reveal></section>
+  <section className="about light-section" id="about"><div className="shell"><Reveal className="about__heading" direction="left"><div><p className="section-label">About Elite</p><h2>Car care,<br /><span>made mobile.</span></h2></div><p>Belgium-based car wash and auto detailing. At home, we can care for the whole vehicle; at an office, we focus on interior detailing that fits around your day.</p></Reveal><div className="about__body"><Reveal className="about__statement" delay={100} direction="left"><span>Built around the appointment</span><p>We arrive prepared, assess the vehicle with you and focus on the work that makes the biggest difference. From a fresh wash to a full detail or headlight polish, the standard stays considered.</p><PrimaryLink href="#services">View our services</PrimaryLink></Reveal><Reveal className="about__service-list" delay={160} direction="right">{aboutServices.map(([number, title, description]) => <AboutService description={description} key={number} number={number} title={title} />)}</Reveal></div></div></section>
 
   <ServiceAreaMap />
 
   <section className="services light-section" id="services"><div className="shell"><Reveal className="section-top"><div><p className="section-label">Our services</p><h2>Everything your car <span>needs.</span></h2></div><p>From regular upkeep to complete transformation, every service is adapted to the condition of your vehicle.</p></Reveal><Reveal className="service-grid" delay={120}>{services.map(([number, title, description]) => <ServiceCard description={description} key={number} number={number} title={title} />)}</Reveal><Reveal className="service-media-grid" delay={180}>{serviceVisuals.map((item) => <MediaCard {...item} key={item.title} />)}</Reveal></div></section>
+
+  <section className="packages" id="pricing"><div className="shell"><Reveal className="section-top section-top--dark"><div><p className="section-label">Price packages</p><h2>Clear care.<br /><span>Clear pricing.</span></h2></div><p>Every vehicle is different. These starting prices give you a clear place to begin before we confirm your appointment.</p></Reveal><Reveal delay={120}><MobileCarousel ariaLabel="Price packages" className="package-carousel">{packages.map(([label, title, description, features]) => <PackageCard description={description} features={features} key={title} label={label} title={title} />)}</MobileCarousel></Reveal><Reveal className="add-ons" delay={180}><div className="add-ons__intro"><div><p className="section-label">Optional extras</p><h3>Add the detail<br /><span>that matters.</span></h3></div><p>Choose any of these focused upgrades alongside your selected package.</p></div><MobileCarousel ariaLabel="Optional detailing add-ons" className="add-ons-carousel">{addOns.map(([title, description, price]) => <AddOnCard description={description} key={title} price={price} title={title} />)}</MobileCarousel></Reveal></div></section>
 
   <section className="works shell" id="works"><Reveal className="section-top section-top--dark"><div><p className="section-label">Our works</p><h2>Care you can<br /><span>see.</span></h2></div><p>A closer look at the methods, finishes and attention that shape every detailing appointment.</p></Reveal><Reveal className="work-grid" delay={120}>{works.map((item) => <MediaCard {...item} key={item.title} />)}</Reveal><Reveal delay={180}><BeforeAfterGallery {...workComparison} /></Reveal></section>
 

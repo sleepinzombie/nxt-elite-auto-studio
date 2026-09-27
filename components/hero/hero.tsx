@@ -9,10 +9,10 @@ const Hero = () => <section className="hero" id="home">
     <div className="hero__inner shell">
       <Reveal className="hero__masthead">
         <h1 aria-label="Detailing delivered to your door"><span className="hero__headline-primary">Detailing</span><span className="hero__headline-secondary">To your <span>door.</span></span></h1>
-        <p className="hero__lede">At home, enjoy complete interior and exterior detailing. At your office, we provide interior-only care—so your day can continue uninterrupted.</p>
+        <p className="hero__lede">A considered car wash and detailing experience for the vehicle you drive every day.</p>
         <div className="hero__actions"><PrimaryLink href="#contact">Dispatch a team</PrimaryLink><a href="#services">Explore services <ArrowDownIcon aria-hidden="true" size={13} weight="bold" /></a></div>
       </Reveal>
-      <div className="hero__booking-row"><p><strong>Care, wherever you are.</strong><span>Choose a home or office appointment that suits your day.</span></p><div className="hero__proof"><p><strong>At home</strong><span>Interior + exterior detailing</span></p><p><strong>At the office</strong><span>Interior detailing only</span></p><p><strong>65 km</strong><span>Brussels service radius</span></p></div></div>
+      <div className="hero__booking-row"><p><strong>Made for the finish.</strong><span>Clear scope, careful work and a vehicle that feels properly looked after.</span></p><div className="hero__proof"><p><strong>Car wash</strong><span>Safe exterior care</span></p><p><strong>Detailing</strong><span>Inside and out</span></p><p><strong>Headlights</strong><span>Cleaned and polished</span></p></div></div>
     </div>
   </div>
 </section>;

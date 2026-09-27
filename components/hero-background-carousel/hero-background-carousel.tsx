@@ -6,12 +6,12 @@ import { useEffect, useRef, useState } from "react";
 type Slide = { alt: string; credit: string; page: string; src: string; unoptimized?: boolean };
 
 const slides: Slide[] = [
-  { src: "https://images.unsplash.com/photo-1746593934498-b335e4e04845?auto=format&fit=crop&q=88&w=2200", alt: "Black luxury vehicle in a modern car wash", credit: "Srinivasa Yadav", page: "https://unsplash.com/photos/black-car-in-a-modern-car-wash-p8wO38qEIhk" },
-  { src: "https://images.unsplash.com/photo-1708805282706-f44730b7e527?auto=format&fit=crop&q=88&w=2200", alt: "Professional detailer polishing a black vehicle", credit: "Zac Nielson", page: "https://unsplash.com/photos/CsZjHjFN3N8" },
-  { src: "https://images.unsplash.com/photo-1761312834150-4beefff097a7?auto=format&fit=crop&q=88&w=2200", alt: "Luxury vehicle covered in soap during a careful wash", credit: "Willian Cittadin", page: "https://unsplash.com/photos/black-car-covered-in-soap-suds-during-wash-bCQSrcYghJI" },
-  { src: "https://images.unsplash.com/photo-1708805282683-50a060eba80f?auto=format&fit=crop&q=88&w=2200", alt: "Detailer carefully cleaning a vehicle wheel", credit: "Zac Nielson", page: "https://unsplash.com/photos/person-cleaning-car-tire-with-brush-8k_T1EwTySs" },
-  { src: "https://images.unsplash.com/photo-1605437241278-c1806d14a4d9?fit=crop&fm=webp&q=88&w=2200", alt: "Clean premium black leather car interior", credit: "Ján Vlačuha", page: "https://unsplash.com/photos/U4IaoKF5aj4", unoptimized: true },
-  { src: "https://images.unsplash.com/photo-1633014041037-f5446fb4ce99?auto=format&fit=crop&q=88&w=2200", alt: "Premium vehicle covered in foam during an exterior wash", credit: "mintosko", page: "https://unsplash.com/photos/V4b2j7f1dfc" },
+  { src: "https://images.unsplash.com/photo-1608506375591-b90e1f955e4b?auto=format&fit=crop&q=88&w=2200", alt: "Person spraying soapy foam onto a black sports car in a garage", credit: "Andre Tan", page: "https://unsplash.com/photos/sports-car-washing-in-garage-pRppMPh4Zho" },
+  { src: "https://images.unsplash.com/photo-1605164598708-25701594473e?auto=format&fit=crop&q=88&w=2200", alt: "Car covered in snow inside a garage", credit: "Zulfahmi Khani", page: "https://unsplash.com/photos/a-car-is-covered-in-snow-in-a-garage-9iH_6JO7Ufs" },
+  { src: "https://images.unsplash.com/photo-1608259243654-70c070e0f6ed?auto=format&fit=crop&q=88&w=2200", alt: "Driver seated inside a car", credit: "Andre Tan", page: "https://unsplash.com/photos/man-in-black-t-shirt-driving-car-GaOk6CfdMVk" },
+  { src: "https://images.unsplash.com/photo-1652898072061-785998d820cb?auto=format&fit=crop&q=88&w=2200", alt: "Car being washed in a garage", credit: "Vladyslav Lytvyshchenko", page: "https://unsplash.com/photos/a-car-is-being-washed-in-a-garage-OYjUY22nsV8" },
+  { src: "https://images.unsplash.com/photo-1694025909289-fb9dd4660e97?auto=format&fit=crop&q=88&w=2200", alt: "Man washing a luxury car with a hose", credit: "lucas clarysse", page: "https://unsplash.com/photos/a-man-is-washing-a-car-with-a-hose-t1lSsl_nPCQ" },
+  { src: "https://images.unsplash.com/photo-1727791712196-8d35b2ba2918?auto=format&fit=crop&q=88&w=2200", alt: "Car dashboard with a phone and radio", credit: "Olivie Zemanova", page: "https://unsplash.com/photos/a-car-dashboard-with-a-phone-and-a-car-radio-CBb7lEZ69JE" },
 ];
 
 const HeroBackgroundCarousel = () => {

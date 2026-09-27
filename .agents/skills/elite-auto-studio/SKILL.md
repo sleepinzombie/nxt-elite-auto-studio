@@ -14,3 +14,7 @@ Treat `app/globals.css` as the design-token source. Reuse its colors, spacing rh
 Use English as the website's primary customer-facing language while keeping Belgian service-area context accurate. Keep contact and booking links as clearly replaceable placeholders until the business supplies final details.
 
 Use Unsplash exclusively for new photographic website imagery. Preserve the original Unsplash photo page and creator attribution in the implementation; do not use generated imagery or another stock-photo source for new website photos.
+
+## Responsive card carousels
+
+Use `components/mobile-carousel/mobile-carousel.tsx` when a group of related cards needs a focused mobile presentation. It preserves a grid on larger screens and becomes a swipeable, controlled carousel on small screens. Reuse it for card collections rather than creating one-off mobile carousel logic.
