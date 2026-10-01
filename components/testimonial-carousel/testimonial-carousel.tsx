@@ -2,6 +2,7 @@
 
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 import TestimonialCard from "@/components/testimonial-card/testimonial-card";
 
 type Testimonial = { quote: string; source: string; location: string };
@@ -10,7 +11,7 @@ type TestimonialCarouselProps = { testimonials: Testimonial[] };
 const TestimonialCarousel = ({ testimonials }: TestimonialCarouselProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
   const total = testimonials.length;
-  const goTo = (index: number) => setActiveIndex((index + total) % total);
+  const goTo = (index: number, direction: "previous" | "next" | "pagination") => { trackEvent("testimonial_nav", { direction }); setActiveIndex((index + total) % total); };
 
   useEffect(() => {
     if (total < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -26,8 +27,8 @@ const TestimonialCarousel = ({ testimonials }: TestimonialCarouselProps) => {
       {testimonials.map((testimonial, index) => <div aria-hidden={index !== activeIndex} className={`testimonial-carousel__slide${index === activeIndex ? " is-active" : ""}`} id={`testimonial-${index + 1}`} key={`${testimonial.source}-${testimonial.location}`}><span className="testimonial-carousel__index">{String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}</span><TestimonialCard {...testimonial} /></div>)}
     </div>
     <div className="testimonial-carousel__footer">
-      <div aria-label="Choose a testimonial" className="testimonial-carousel__pagination" role="tablist">{testimonials.map((testimonial, index) => <button aria-controls={`testimonial-${index + 1}`} aria-label={`Show testimonial ${index + 1}`} aria-selected={index === activeIndex} key={`${testimonial.source}-${testimonial.location}`} onClick={() => goTo(index)} role="tab" type="button" />)}</div>
-      <div className="testimonial-carousel__controls"><button aria-label="Previous testimonial" onClick={() => goTo(activeIndex - 1)} type="button"><CaretLeftIcon aria-hidden="true" size={16} weight="bold" /></button><button aria-label="Next testimonial" onClick={() => goTo(activeIndex + 1)} type="button"><CaretRightIcon aria-hidden="true" size={16} weight="bold" /></button></div>
+      <div aria-label="Choose a testimonial" className="testimonial-carousel__pagination" role="tablist">{testimonials.map((testimonial, index) => <button aria-controls={`testimonial-${index + 1}`} aria-label={`Show testimonial ${index + 1}`} aria-selected={index === activeIndex} key={`${testimonial.source}-${testimonial.location}`} onClick={() => goTo(index, "pagination")} role="tab" type="button" />)}</div>
+      <div className="testimonial-carousel__controls"><button aria-label="Previous testimonial" onClick={() => goTo(activeIndex - 1, "previous")} type="button"><CaretLeftIcon aria-hidden="true" size={16} weight="bold" /></button><button aria-label="Next testimonial" onClick={() => goTo(activeIndex + 1, "next")} type="button"><CaretRightIcon aria-hidden="true" size={16} weight="bold" /></button></div>
     </div>
   </div>;
 };

@@ -103,7 +103,7 @@ const Page = () => <main>
 
   <section className="testimonials light-section" id="testimonials"><div className="shell"><Reveal className="section-top"><div><p className="section-label">Testimonials</p><h2>Trusted for the<br /><span>details.</span></h2></div><p>Feedback from owners and businesses who choose mobile care at their home or workplace.</p></Reveal><Reveal delay={120}><TestimonialCarousel testimonials={testimonials} /></Reveal></div></section>
 
-  <section className="contact-band" id="contact"><Reveal className="shell contact-band__inner"><div><p>Elite Auto Studio</p><h2>Ready for a<br /><span>better finish?</span></h2></div><div><p>Tell us about your vehicle and we&apos;ll recommend the right service for its condition and your goals.</p><PrimaryLink href="mailto:hello@eliteautostudio.be">Request a booking</PrimaryLink></div></Reveal></section>
+  <section className="contact-band" id="contact"><Reveal className="shell contact-band__inner"><div><p>Elite Auto Studio</p><h2>Ready for a<br /><span>better finish?</span></h2></div><div><p>Tell us about your vehicle and we&apos;ll recommend the right service for its condition and your goals.</p><PrimaryLink href="mailto:hello@eliteautostudio.be" track={{ event: "booking_click", params: { location: "contact_band" } }}>Request a booking</PrimaryLink></div></Reveal></section>
 
   <SiteFooter />
 </main>;

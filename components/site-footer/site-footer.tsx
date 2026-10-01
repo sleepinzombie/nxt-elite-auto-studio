@@ -1,4 +1,5 @@
 import { ArrowUpIcon, ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
+import TrackedLink from "@/components/analytics/tracked-link";
 import BrandMark from "@/components/brand-mark/brand-mark";
 import CookieSettingsButton from "@/components/cookie-consent/cookie-settings-button";
 import PrimaryLink from "@/components/primary-link/primary-link";
@@ -19,7 +20,7 @@ const SiteFooter = () => (
             Delivered to you.
           </h2>
         </div>
-        <PrimaryLink href="mailto:hello@eliteautostudio.be">
+        <PrimaryLink href="mailto:hello@eliteautostudio.be" track={{ event: "booking_click", params: { location: "footer" } }}>
           Request a booking
         </PrimaryLink>
       </div>
@@ -59,7 +60,7 @@ const SiteFooter = () => (
         </div>
         <div>
           <h3>Contact</h3>
-          <a href="mailto:hello@eliteautostudio.be">hello@eliteautostudio.be</a>
+          <TrackedLink event="email_click" href="mailto:hello@eliteautostudio.be">hello@eliteautostudio.be</TrackedLink>
           <span>Brussels, Belgium</span>
           <span>By appointment</span>
         </div>
