@@ -4,89 +4,12 @@ import BrandMark from "@/components/brand-mark/brand-mark";
 import CookieSettingsButton from "@/components/cookie-consent/cookie-settings-button";
 import PrimaryLink from "@/components/primary-link/primary-link";
 import SocialLink from "@/components/social-link/social-link";
+import { useLanguage } from "@/components/language-provider/language-provider";
 
-const SiteFooter = () => (
-  <footer className="site-footer">
-    <div className="shell">
-      <div className="site-footer__lead">
-        <div>
-          <span className="footer-logo">
-            <BrandMark />
-            <b>Elite Auto Studio</b>
-          </span>
-          <h2>
-            Professional care.
-            <br />
-            Delivered to you.
-          </h2>
-        </div>
-        <PrimaryLink href="mailto:hello@eliteautostudio.be" track={{ event: "booking_click", params: { location: "footer" } }}>
-          Request a booking
-        </PrimaryLink>
-      </div>
-      <div className="site-footer__grid">
-        <div>
-          <p>
-            Premium mobile car detailing for private vehicles and businesses
-            across Brussels and Brabant.
-          </p>
-          <div className="footer-socials">
-            <SocialLink
-              href="https://www.facebook.com/profile.php?id=61594065960502&mibextid=wwXIfr&rdid=LLFcLvVMOPmumYIc&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17cquzXp8Z%2F%3Fmibextid%3DwwXIfr#"
-              label="Facebook"
-            />
-            <SocialLink
-              href="https://www.tiktok.com/@lite.auto.studio?_r=1&_t=ZG-99QrpqTcBZQ"
-              label="TikTok"
-            />
-          </div>
-        </div>
-        <div>
-          <h3>Explore</h3>
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#pricing">Price packages</a>
-          <a href="#works">Our works</a>
-          <a href="#process">Process</a>
-          <a href="#faq">FAQs</a>
-          <a href="#testimonials">Testimonials</a>
-        </div>
-        <div>
-          <h3>Services</h3>
-          <span>Interior detailing</span>
-          <span>Exterior detailing</span>
-          <span>Full detailing</span>
-          <span>Sale preparation</span>
-        </div>
-        <div>
-          <h3>Contact</h3>
-          <TrackedLink event="email_click" href="mailto:hello@eliteautostudio.be">hello@eliteautostudio.be</TrackedLink>
-          <span>Brussels, Belgium</span>
-          <span>By appointment</span>
-        </div>
-      </div>
-      <div className="site-footer__bottom">
-        <span>
-          © 2026 Elite Auto Studio. All rights reserved. | <CookieSettingsButton />
-        </span>
-        <span>Quality · Precision · Finish</span>
-        <a href="#home">
-          Back to top <ArrowUpIcon aria-hidden="true" size={12} weight="bold" />
-        </a>
-      </div>
-      <div className="site-footer__credit-bar">
-        <span>Website by</span>
-        <a
-          className="site-footer__credit"
-          href="https://www.vish.studio"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          Vish Studio <ArrowUpRightIcon aria-hidden="true" size={13} weight="bold" />
-        </a>
-      </div>
-    </div>
-  </footer>
-);
+const SiteFooter = () => {
+  const { language } = useLanguage();
+  const fr = language === "fr";
+  return <footer className="site-footer"><div className="shell"><div className="site-footer__lead"><div><span className="footer-logo"><BrandMark /><b>Elite Auto Studio</b></span><h2>{fr ? "Un soin professionnel." : "Professional care."}<br />{fr ? "Livré chez vous." : "Delivered to you."}</h2></div><PrimaryLink href="mailto:hello@eliteautostudio.be" track={{ event: "booking_click", params: { location: "footer" } }}>{fr ? "Demander une réservation" : "Request a booking"}</PrimaryLink></div><div className="site-footer__grid"><div><p>{fr ? "Detailing auto mobile premium pour particuliers et entreprises à Bruxelles et dans le Brabant." : "Premium mobile car detailing for private vehicles and businesses across Brussels and Brabant."}</p><div className="footer-socials"><SocialLink href="https://www.facebook.com/profile.php?id=61594065960502&mibextid=wwXIfr&rdid=LLFcLvVMOPmumYIc&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F17cquzXp8Z%2F%3Fmibextid%3DwwXIfr#" label="Facebook" /><SocialLink href="https://www.tiktok.com/@lite.auto.studio?_r=1&_t=ZG-99QrpqTcBZQ" label="TikTok" /></div></div><div><h3>{fr ? "Explorer" : "Explore"}</h3><a href="#about">{fr ? "À propos" : "About"}</a><a href="#services">Services</a><a href="#pricing">{fr ? "Forfaits" : "Price packages"}</a><a href="#works">{fr ? "Réalisations" : "Our works"}</a><a href="#process">{fr ? "Processus" : "Process"}</a><a href="#faq">FAQ</a><a href="#testimonials">{fr ? "Témoignages" : "Testimonials"}</a></div><div><h3>Services</h3><span>{fr ? "Detailing intérieur" : "Interior detailing"}</span><span>{fr ? "Detailing extérieur" : "Exterior detailing"}</span><span>{fr ? "Detailing complet" : "Full detailing"}</span><span>{fr ? "Préparation à la vente" : "Sale preparation"}</span></div><div><h3>Contact</h3><TrackedLink event="email_click" href="mailto:hello@eliteautostudio.be">hello@eliteautostudio.be</TrackedLink><span>{fr ? "Bruxelles, Belgique" : "Brussels, Belgium"}</span><span>{fr ? "Sur rendez-vous" : "By appointment"}</span></div></div><div className="site-footer__bottom"><span>© 2026 Elite Auto Studio. {fr ? "Tous droits réservés." : "All rights reserved."} | <CookieSettingsButton /></span><span>{fr ? "Qualité · Précision · Finition" : "Quality · Precision · Finish"}</span><a href="#home">{fr ? "Retour en haut" : "Back to top"} <ArrowUpIcon aria-hidden="true" size={12} weight="bold" /></a></div><div className="site-footer__credit-bar"><span>{fr ? "Site web par" : "Website by"}</span><a className="site-footer__credit" href="https://www.vish.studio" rel="noopener noreferrer" target="_blank">Vish Studio <ArrowUpRightIcon aria-hidden="true" size={13} weight="bold" /></a></div></div></footer>;
+};
 
 export default SiteFooter;
