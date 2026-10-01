@@ -1,4 +1,4 @@
-import { ArrowUpIcon } from "@phosphor-icons/react/ssr";
+import { ArrowUpIcon, ArrowUpRightIcon } from "@phosphor-icons/react/ssr";
 import BrandMark from "@/components/brand-mark/brand-mark";
 import CookieSettingsButton from "@/components/cookie-consent/cookie-settings-button";
 import PrimaryLink from "@/components/primary-link/primary-link";
@@ -71,6 +71,17 @@ const SiteFooter = () => (
         <span>Quality · Precision · Finish</span>
         <a href="#home">
           Back to top <ArrowUpIcon aria-hidden="true" size={12} weight="bold" />
+        </a>
+      </div>
+      <div className="site-footer__credit-bar">
+        <span>Website by</span>
+        <a
+          className="site-footer__credit"
+          href="https://www.vish.studio"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Vish Studio <ArrowUpRightIcon aria-hidden="true" size={13} weight="bold" />
         </a>
       </div>
     </div>
